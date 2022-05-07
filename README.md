@@ -4,6 +4,9 @@
 
 A [Flarum](http://flarum.org) extension. Check if a similar discussion exists in Flarum
 
+![chrome_U2DZc1Ckzg](https://user-images.githubusercontent.com/79002016/167251934-e27e7cff-7ccd-4227-b491-1943f48b2290.gif)
+
+
 ## Installation
 
 Install with composer:
