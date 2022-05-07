@@ -19,12 +19,5 @@ composer require justoverclock/check-duplicate-discussions:"*"
 
 ```sh
 composer update justoverclock/check-duplicate-discussions:"*"
-php flarum migrate
 php flarum cache:clear
 ```
-
-## Links
-
-- [Packagist](https://packagist.org/packages/justoverclock/check-duplicate-discussions)
-- [GitHub](https://github.com/justoverclock/check-duplicate-discussions)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
