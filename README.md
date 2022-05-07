@@ -15,15 +15,5 @@ A [Flarum](http://flarum.org) extension. Check for a similar discussion during n
 
 ## Installation
 
-Install with composer:
-
-```sh
-composer require justoverclock/check-duplicate-discussions:"*"
-```
-
-## Updating
-
-```sh
-composer update justoverclock/check-duplicate-discussions:"*"
-php flarum cache:clear
-```
+Extiverse: https://extiverse.com/extension/justoverclock/check-duplicate-discussions
+Price: 25 USD/once
