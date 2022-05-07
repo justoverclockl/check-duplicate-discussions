@@ -1,6 +1,7 @@
 import app from 'flarum/forum/app';
 import {extend} from 'flarum/common/extend';
 import DiscussionComposer from 'flarum/forum/components/DiscussionComposer';
+import Tooltip from 'flarum/common/components/Tooltip';
 
 app.initializers.add('justoverclock/check-duplicate-discussions', () => {
   extend(DiscussionComposer.prototype, 'oncreate', function () {
@@ -52,7 +53,9 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
                   <div class="simdisc">
                      <li>
                         <i class="fas fa-exclamation sim"></i>
-                        <a class="simlink" href=${app.route.discussion(sim)}>${sim.data.attributes.title}</a>
+                        <a class="simlink" href=${app.route.discussion(sim)} rel="nofollow" title="${sim.firstPost().contentHtml().replace(/<\/?[^>]+(>|$)/g, '').substr(0, 200) + '...'}">
+                            ${sim.data.attributes.title}
+                        </a>
                         <span class="bestAnswer-similar" id="best-similar">${baSimilar}</span>
                      </li>
                   </div>`;
