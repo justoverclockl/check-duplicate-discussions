@@ -17,3 +17,7 @@ A [Flarum](http://flarum.org) extension. Check for a similar discussion during n
 
 Extiverse: https://extiverse.com/extension/justoverclock/check-duplicate-discussions
 Price: 25 USD/once
+
+```
+composer require justoverclock/check-duplicate-discussions:"*"
+```
