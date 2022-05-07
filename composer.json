@@ -1,0 +1,53 @@
+{
+    "name": "justoverclock/check-duplicate-discussions",
+    "description": "Check if a similar discussion exists in Flarum",
+    "keywords": [
+        "similar",
+        "similar discussions",
+        "duplicate discussions"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.2.0",
+        "fof/best-answer": "^1.1.9"
+    },
+    "authors": [
+        {
+            "name": "Marco Colia",
+            "email": "info@flarum.it",
+            "role": "Developer"
+        }
+    ],
+    "extra": {
+        "flarum-extension": {
+            "title": "Duplicate Discussions",
+            "category": "features",
+            "icon": {
+                "name": "far fa-clone",
+                "color": "green",
+                "backgroundColor": "white"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": false,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": false,
+                "prettier": true,
+                "typescript": false,
+                "bundlewatch": true,
+                "backendTesting": false,
+                "editorConfig": true,
+                "styleci": true
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,44 @@
+.composerSimilar {
+  position: relative;
+}
+.simdisc-container {
+  z-index: 5000;
+  border-radius: 5px;
+  background: @primary-color;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.simdisc > li {
+  list-style-type: none;
+}
+i.fas.fa-exclamation.sim {
+  margin-right: 8px;
+  color: coral;
+}
+p.simtitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+i.fas.fa-check-circle.simsolved {
+  color: white;
+}
+p.simtitle-desc {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+a.simlink {
+  color: greenyellow;
+}
+body when (@config-dark-mode = false) {
+  p.simtitle-desc {
+    color: white;
+  }
+  p.simtitle {
+    color: white;
+  }
+  i.fas.fa-exclamation.sim {
+    color: white;
+  }
+}
+
