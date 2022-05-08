@@ -6,7 +6,7 @@ A [Flarum](http://flarum.org) extension. Check for a similar discussion during n
 
 ![chrome_U2DZc1Ckzg](https://user-images.githubusercontent.com/79002016/167251934-e27e7cff-7ccd-4227-b491-1943f48b2290.gif)
 
-## Hover a link to read an exerpt of the first post!
+## Hover a link to read an excerpts of the first post!
 
 ## Look if there's a best answer into similar discussions!
 
