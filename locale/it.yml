@@ -1,0 +1,8 @@
+justoverclock-check-duplicate-discussions:
+  admin:
+    similarNumber: Discussioni simili da mostrare
+    similarNumber-help: inserisci il numero di discussioni simili da mostrare
+  forum:
+    title: Thread simili trovati!
+    foundDiscussion: "Prima di aprire un nuovo post, controlla se tra le discussioni simili trovate non ci sia già la soluzione per te! I Thread duplicati verranno chiusi dai moderatori."
+    solvedSimilar: "- Risolto"
