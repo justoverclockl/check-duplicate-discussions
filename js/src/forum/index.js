@@ -5,8 +5,15 @@ import DOMPurify from 'dompurify';
 
 app.initializers.add('justoverclock/check-duplicate-discussions', () => {
   extend(DiscussionComposer.prototype, 'oncreate', function () {
+    const composerDiv = document.getElementById('composer')
+    const newDiv = document.createElement('div')
+    newDiv.setAttribute('id', 'simDisc')
+    newDiv.setAttribute('class', 'simDisc')
+    composerDiv.prepend(newDiv)
+  })
+  extend(DiscussionComposer.prototype, 'oncreate', function () {
     const numberOfSimilar = app.forum.attribute('justoverclock-check-duplicate-discussions.similarNumber') || 3;
-    const composer = document.querySelector('.ComposerBody-editor');
+    const simDisc = document.getElementById('simDisc')
     const inputTitle = document.querySelector('li.item-discussionTitle > h3 > input');
 
     let timeout = null;
@@ -70,7 +77,7 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
                                   </div>`;
               div.innerHTML = DOMPurify.sanitize(resultHtml, { USE_PROFILES: { html: true } });
               container.appendChild(div);
-              composer.insertAdjacentElement('beforebegin', container);
+              simDisc.appendChild(container);
             });
           }
         });
