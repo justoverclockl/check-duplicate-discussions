@@ -1,12 +1,10 @@
-.composerSimilar {
-  position: relative;
-}
 .simdisc-container {
   z-index: 5000;
   border-radius: 5px;
   background: @primary-color;
   padding: 0.5rem;
   margin-bottom: 1rem;
+  position: relative;
 }
 .simdisc > li {
   list-style-type: none;
@@ -30,6 +28,12 @@ p.simtitle-desc {
 a.simlink {
   color: greenyellow;
 }
+.composer {
+  position: relative;
+}
+.DiscussionListItem {
+  z-index: 1 !important;
+}
 body when (@config-dark-mode = false) {
   p.simtitle-desc {
     color: white;
@@ -48,14 +52,44 @@ li.item-similardisc {
 
 div#simDisc {
   margin-left: 220px;
+  z-index: 8500 !important;
+  position: fixed;
+  width: 420px;
+  right: 40px;
+  animation: fadeInRight 1s ease-in-out;
+}
+.simdisc-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.simdisc-close {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.DiscussionListItem-content {
+  z-index: 500;
 }
 @media (max-width: 767px) {
   .simdisc-container {
-    border-radius: 5px;
-    background: #4d698e;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    position: absolute;
-    top: 365px;
+    display: none;
+  }
+}
+
+
+.fade-in {
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: .3s;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

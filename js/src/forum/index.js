@@ -5,22 +5,33 @@ import DOMPurify from 'dompurify';
 
 app.initializers.add('justoverclock/check-duplicate-discussions', () => {
   extend(DiscussionComposer.prototype, 'oncreate', function () {
-    const composerDiv = document.getElementById('composer')
+    const attrs = this.attrs.composer.height
+    console.log(typeof attrs)
+    const appContent = document.querySelector('.IndexPage-results.sideNavOffset')
     const newDiv = document.createElement('div')
     newDiv.setAttribute('id', 'simDisc')
     newDiv.setAttribute('class', 'simDisc')
-    composerDiv.prepend(newDiv)
+    newDiv.style.bottom = attrs + 'px'
+    appContent.prepend(newDiv)
   })
   extend(DiscussionComposer.prototype, 'oncreate', function () {
     const numberOfSimilar = app.forum.attribute('justoverclock-check-duplicate-discussions.similarNumber') || 3;
     const simDisc = document.getElementById('simDisc')
     const inputTitle = document.querySelector('li.item-discussionTitle > h3 > input');
 
+
     let timeout = null;
 
     function clearSimilarDiscussions() {
       const resultDisc = document.getElementById('sim-container');
       resultDisc ? resultDisc.remove() : false;
+    }
+
+    function closeSimilarModal(closeBtnElement) {
+      const divToDelete = document.getElementById('sim-container')
+      closeBtnElement.addEventListener('click', () => {
+        divToDelete.remove()
+      })
     }
 
     function searchForSimilarDiscussions(title) {
@@ -36,10 +47,13 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
           if (title === '') return;
           if (res.length > 0) {
             const container = document.createElement('div');
-            container.setAttribute('class', 'simdisc-container');
+            container.setAttribute('class', 'simdisc-container fade-in');
             container.setAttribute('id', 'sim-container');
             const html = `<div>
-                             <p class="simtitle" >${checkTitle} </p>
+                             <div class="simdisc-controls">
+                             <p class="simtitle" >${checkTitle}</p>
+                             <div class="simdisc-close" id="simdisc-close">&times</div>
+                             </div>
                              <p class="simtitle-desc">${desc}</p>
                           </div>`;
 
@@ -58,7 +72,7 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
               } else {
                 baSimilar = '';
               }
-              const resultHtml = `<div class="simdisc">
+              const resultHtml = `<div class="simdisc" id="sim-disc">
                                     <li>
                                         <i class="fas fa-exclamation sim"></i>
                                              <a class="simlink" href=${app.route.discussion(sim)}
@@ -78,10 +92,14 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
               div.innerHTML = DOMPurify.sanitize(resultHtml, { USE_PROFILES: { html: true } });
               container.appendChild(div);
               simDisc.appendChild(container);
+              const closeBtn = document.getElementById('simdisc-close')
+              closeSimilarModal(closeBtn)
             });
           }
         });
     }
+
+
 
     inputTitle.addEventListener('keyup', (e) => {
       clearTimeout(timeout);
