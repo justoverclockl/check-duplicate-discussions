@@ -6,3 +6,4 @@ justoverclock-check-duplicate-discussions:
     title: Thread simili trovati!
     foundDiscussion: "Prima di aprire un nuovo post, controlla se tra le discussioni simili trovate non ci sia già la soluzione per te! I Thread duplicati verranno chiusi dai moderatori."
     solvedSimilar: "- Risolto"
+    identicalWarning: "Attenzione: il titolo della tua discussione è identico a quello di un thread già postato. Non aprirne uno identico."

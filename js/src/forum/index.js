@@ -31,7 +31,10 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
         divToDelete.remove();
       });
     }
-    
+
+    function removeDisabled(element) {
+      element.disabled = false
+    }
 
     function searchForSimilarDiscussions(title) {
       const checkTitle = app.translator.trans('justoverclock-check-duplicate-discussions.forum.title');
@@ -59,6 +62,12 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
             container.innerHTML = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
 
             res.forEach((sim) => {
+
+              if (title.toLowerCase() === sim.data.attributes.title.toLowerCase()) {
+                submitBtn.disabled = true
+                app.alerts.show({ type: 'warning' }, app.translator.trans('justoverclock-check-duplicate-discussions.forum.identicalWarning'))
+              }
+
               const div = document.createElement('div');
               div.setAttribute('id', 'similar-discussions');
               div.setAttribute('class', 'similar-discussions');
@@ -102,6 +111,7 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
       clearTimeout(timeout);
       timeout = setTimeout(function () {
         searchForSimilarDiscussions(e.target.value.toLowerCase());
+        removeDisabled(submitBtn)
       }, 1000);
       clearSimilarDiscussions();
     });
