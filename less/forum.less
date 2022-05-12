@@ -1,5 +1,4 @@
 .simdisc-container {
-  z-index: 5000;
   border-radius: 5px;
   background: @primary-color;
   padding: 0.5rem;
@@ -31,9 +30,6 @@ a.simlink {
 .composer {
   position: relative;
 }
-.DiscussionListItem {
-  z-index: 1 !important;
-}
 body when (@config-dark-mode = false) {
   p.simtitle-desc {
     color: white;
@@ -49,11 +45,10 @@ li.item-similardisc {
   display: block;
   padding: 0.6rem;
 }
-
 div#simDisc {
-  z-index: 8500 !important;
   position: fixed;
   left: 50%;
+  z-index: 5000;
   transform: translateX(-50%);
   max-width: 870px;
   margin-left: 120px;
@@ -67,9 +62,6 @@ div#simDisc {
 .simdisc-close {
   font-size: 1.5rem;
   cursor: pointer;
-}
-.DiscussionListItem-content {
-  z-index: 500;
 }
 @media (max-width: 767px) {
   .simdisc-container {
