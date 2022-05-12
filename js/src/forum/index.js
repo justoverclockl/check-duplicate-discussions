@@ -5,21 +5,19 @@ import DOMPurify from 'dompurify';
 
 app.initializers.add('justoverclock/check-duplicate-discussions', () => {
   extend(DiscussionComposer.prototype, 'oncreate', function () {
-    const attrs = this.attrs.composer.height
-    console.log(typeof attrs)
-    const appContent = document.querySelector('.IndexPage-results.sideNavOffset')
-    const newDiv = document.createElement('div')
-    newDiv.setAttribute('id', 'simDisc')
-    newDiv.setAttribute('class', 'simDisc')
-    newDiv.style.bottom = attrs + 'px'
-    appContent.prepend(newDiv)
-  })
+    const attrs = this.attrs.composer.height;
+    const appContent = document.querySelector('.IndexPage-results.sideNavOffset');
+    const newDiv = document.createElement('div');
+    newDiv.setAttribute('id', 'simDisc');
+    newDiv.setAttribute('class', 'simDisc');
+    newDiv.style.bottom = attrs + 'px';
+    appContent.prepend(newDiv);
+  });
   extend(DiscussionComposer.prototype, 'oncreate', function () {
     const numberOfSimilar = app.forum.attribute('justoverclock-check-duplicate-discussions.similarNumber') || 3;
-    const simDisc = document.getElementById('simDisc')
+    const simDisc = document.getElementById('simDisc');
     const inputTitle = document.querySelector('li.item-discussionTitle > h3 > input');
-
-
+    const submitBtn = document.querySelector('li.item-submit.App-primaryControl').firstElementChild
     let timeout = null;
 
     function clearSimilarDiscussions() {
@@ -28,11 +26,12 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
     }
 
     function closeSimilarModal(closeBtnElement) {
-      const divToDelete = document.getElementById('sim-container')
+      const divToDelete = document.getElementById('sim-container');
       closeBtnElement.addEventListener('click', () => {
-        divToDelete.remove()
-      })
+        divToDelete.remove();
+      });
     }
+    
 
     function searchForSimilarDiscussions(title) {
       const checkTitle = app.translator.trans('justoverclock-check-duplicate-discussions.forum.title');
@@ -92,14 +91,12 @@ app.initializers.add('justoverclock/check-duplicate-discussions', () => {
               div.innerHTML = DOMPurify.sanitize(resultHtml, { USE_PROFILES: { html: true } });
               container.appendChild(div);
               simDisc.appendChild(container);
-              const closeBtn = document.getElementById('simdisc-close')
-              closeSimilarModal(closeBtn)
+              const closeBtn = document.getElementById('simdisc-close');
+              closeSimilarModal(closeBtn);
             });
           }
         });
     }
-
-
 
     inputTitle.addEventListener('keyup', (e) => {
       clearTimeout(timeout);
